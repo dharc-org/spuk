@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPARQL Query Interface - Digital Damaged Ceramics</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bulma CSS for Navbar -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- Leaflet & MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Agu+Display&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="icon" href="assets/icons/website_icon.ico" type="image/x-icon">
+
+  <!-- Ionicons for GitHub icon -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar is-spaced has-shadow" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="img/logo.png" alt="Logo" />
+          <span class="is-large">SPUK</span>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html#summary">Summary</a>
+          <a class="navbar-item" href="index.html#entities">Entities</a>
+          <a class="navbar-item" href="sparql.html#sparql-interface">SPARQL</a>
+          <a class="navbar-item" href="sparql.html#other-section">Other</a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button" href="https://github.com/sbrzt/spuk" target="_blank">
+                <span class="icon"><ion-icon name="logo-github" size="large"></ion-icon></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SPARQL Interface Section -->
+  <section id="sparql-interface" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">SPARQL Query Interface</h2>
+
+      <!-- Example Questions Dropdown -->
+      <div class="mb-3">
+        <label for="exampleSelect" class="form-label fw-bold fs-5 mb-2">Select a Question:</label>
+        <select id="exampleSelect" class="form-select">
+          <option value="">-- Choose an example --</option>
+          <!-- Titolo museale -->
+            <!-- TITOLO MUSEALE -->
+          <option
+            value="PREFIX crm: &lt;http://www.cidoc-crm.org/cidoc-crm/&gt; PREFIX lrmoo: &lt;http://iflastandards.info/ns/lrm/lrmoo/&gt; PREFIX aat: &lt;http://vocab.getty.edu/page/aat/&gt; SELECT ?item ?museumTitle WHERE { ?item a lrmoo:F5_Item . ?manifestation lrmoo:R7i_is_exemplified_by ?item . ?expression lrmoo:R4i_is_embodied_in ?manifestation . ?work lrmoo:R3_is_realised_in ?expression ; crm:P102_has_title ?t . ?t crm:P2_has_type aat:300417207 ; crm:P190_has_symbolic_content ?museumTitle . FILTER(lang(?museumTitle) = &#34;it&#34;) }"
+          >
+            List all museum titles
+          </option>
+
+          <!-- Tipologia -->
+          <option value="PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?type WHERE { ?item a lrmoo:F5_Item . ?manifestation lrmoo:R7i_is_exemplified_by ?item ; crm:P2_has_type ?type . }">Retrieve all object typologies</option>
+          <!-- Didascalia -->
+          <option value="PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?description WHERE { ?item a lrmoo:F5_Item ; crm:P3_has_note ?description . }">List all the object descriptions</option>
+          <!-- Tecnica -->
+          <option value="PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?technique WHERE { ?item a lrmoo:F5_Item . ?manifestation lrmoo:R7i_is_exemplified_by ?item . ?expression lrmoo:R4i_is_embodied_in ?manifestation . ?creation a lrmoo:F28_Expression_Creation ; lrmoo:R17_created ?expression ; crm:P32_used_general_technique ?technique . }">List all the techniques</option>
+          <!-- Data -->
+          <option value="PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item (IF(STR(YEAR(?begin)) = STR(YEAR(?end)), STR(YEAR(?begin)), CONCAT(STR(YEAR(?begin)), '-', STR(YEAR(?end)))) AS ?date) WHERE { ?item a lrmoo:F5_Item . ?manifestation lrmoo:R7i_is_exemplified_by ?item . ?expression lrmoo:R4i_is_embodied_in ?manifestation . ?creation a lrmoo:F28_Expression_Creation ; lrmoo:R17_created ?expression ; crm:P4_has_time-span ?timespan . ?timespan crm:P82a_begin_of_the_begin ?begin ; crm:P82b_end_of_the_end ?end . }">Retrieve all the creation dates</option>
+          <!-- Ente di conservazione -->
+          <option value="PREFIX aat: <http://vocab.getty.edu/page/aat/> PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item (REPLACE(REPLACE(STR(?conservation_org), '.*/([^/]+)/[^/]+$', '$1'), '_', ' ') AS ?conservation_org_label) WHERE { ?item a lrmoo:F5_Item . ?activity crm:P16_used_specific_object ?item ; crm:P2_has_type aat:300054277 ; crm:P14_carried_out_by ?conservation_org . }">List all conservation organizations</option>
+          <!-- Luogo di conservazione -->
+          <option value="PREFIX aat: <http://vocab.getty.edu/page/aat/> PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item (REPLACE(REPLACE(STR(?conservation_place), '.*/([^/]+)/[^/]+$', '$1'), '_', ' ') AS ?conservation_place_label) WHERE { ?item a lrmoo:F5_Item . ?activity crm:P16_used_specific_object ?item ; crm:P2_has_type aat:300054277 ; crm:P14_carried_out_by ?conservation_org . ?conservation_org crm:P74_has_current_or_former_residence ?conservation_place . }">List all conservation locations</option>
+          <!-- Licenza modello 3d -->
+          <option value='PREFIX aat: <http://vocab.getty.edu/page/aat/> PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX crmdig: <http://www.ics.forth.gr/isl/CRMdig/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?license_link WHERE { ?item a lrmoo:F5_Item . OPTIONAL { ?acquisition crmdig:L1_digitized ?item ; crmdig:L11_had_output ?3d_model_00 . } OPTIONAL { ?item crm:P130i_features_are_also_found_on ?3d_model_00 . } ?3d_model_00 (^crmdig:L10_had_input/crmdig:L11_had_output)+ ?3d_model . ?license crm:P2_has_type aat:300435434 ; crm:P67_refers_to ?3d_model ; crm:P70i_is_documented_in ?license_link . } GROUP BY ?item'>
+              List all 3D model licenses
+            </option>
+          <!-- Riproduzione digitale -->
+          <option value="PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?digital_repr WHERE { ?item a lrmoo:F5_Item . ?manifestation lrmoo:R7i_is_exemplified_by ?item ; crm:P130i_features_are_also_found_on ?digital_repr . }">List all digital reproductions</option>
+          <!-- Modello digitale esistente -->
+          <option value="PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?existing_model WHERE { ?item a lrmoo:F5_Item ; crm:P130i_features_are_also_found_on ?3d_model . ?3d_model crm:P130_shows_features_of ?existing_model . }">List all existing digital models</option>
+          <!-- Soggetti -->
+          <option value="PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item (GROUP_CONCAT(REPLACE(REPLACE(STR(?subject), '.*/([^/]+)/[^/]+', '$1'), '_', ' ') ; SEPARATOR='; ') AS ?subjects) WHERE { ?item a lrmoo:F5_Item . ?manifestation lrmoo:R7i_is_exemplified_by ?item . ?expression lrmoo:R4i_is_embodied_in ?manifestation ; crm:P129_is_about ?subject . } GROUP BY ?item">List all subjects</option>
+          <!-- Persone o enti -->
+          <option value='PREFIX crm:   <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item (GROUP_CONCAT(CONCAT(?clean_name, " (", STR(?activity_type), ")"); SEPARATOR="; ") AS ?agents) WHERE { ?item a lrmoo:F5_Item . ?manifestation lrmoo:R7i_is_exemplified_by ?item . ?expression lrmoo:R4i_is_embodied_in ?manifestation . ?creation a lrmoo:F28_Expression_Creation ; lrmoo:R17_created ?expression ; crm:P9_consists_of ?activity . ?activity crm:P2_has_type ?activity_type ; crm:P14_carried_out_by ?agent . BIND(STR(?agent) AS ?agent_uri) BIND(STRAFTER(?agent_uri, "acr/") AS ?after_acr) BIND(STRBEFORE(?after_acr, "/1") AS ?agent_name_raw) BIND(REPLACE(?agent_name_raw, "_", " ") AS ?clean_name) } GROUP BY ?item'>
+            List all people and organisations
+          </option>
+          <!-- link aton -->
+          <option value="PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX crmdig: <http://www.cidoc-crm.org/extensions/crmdig/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?link_aton WHERE { ?item a lrmoo:F5_Item . OPTIONAL { ?acquisition crmdig:L1_digitized ?item ; crmdig:L11_had_output ?3d_model_00 . } OPTIONAL { ?item crm:P130i_features_are_also_found_on ?3d_model_00 . } ?3d_model_00 (^crmdig:L10_had_input/crmdig:L11_had_output)+ ?3d_model . ?3d_model crm:P1_is_identified_by ?id_aton . ?id_aton crm:P190_has_symbolic_content ?link_aton . }">List all Aton links</option>
+        </select>
+      </div>
+
+      <!-- Endpoint URL -->
+      <div class="mb-3">
+        <label for="endpoint" class="form-label fw-bold fs-5 mb-2">Endpoint URL:</label>
+        <input id="endpoint" type="text" class="form-control" value="https://chad-kg.duckdns.org/chadkg/sparql" />
+      </div>
+
+      <!-- Query Textarea -->
+      <div class="mb-3">
+        <label for="query" class="form-label fw-bold fs-5 mb-2">SPARQL Query:</label>
+        <textarea id="query" rows="8" class="form-control">SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 10</textarea>
+      </div>
+
+      <!-- Run Button -->
+      <div class="text-center">
+        <button id="run" class="btn btn-custom px-4">Run Query</button>
+      </div>
+
+      <h3 class="mt-4">Response</h3>
+      <div id="results" class="mt-2 table-responsive" style="overflow-x:auto;"></div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p><strong>SPUK</strong> by <a href="https://jgthms.com">Sebastian Barzaghi</a>. Licensed <a href="https://opensource.org/license/mit">MIT</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Script Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Navbar burger script -->
+  <script src="js/navbar.js" defer></script>
+  <!-- sparql script -->
+  <script src="js/sparql.js" defer></script>
+</body>
+</html>
