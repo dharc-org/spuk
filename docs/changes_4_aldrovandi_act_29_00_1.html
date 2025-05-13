@@ -15,7 +15,7 @@ lang="en">
   role="navigation" 
   aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" href="/">
         <img src="img/logo.png"/>
         <span class="is-large">SPUK</span>
       </a>
@@ -30,12 +30,8 @@ lang="en">
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="#summary">
-          Summary
-        </a>
-        <a class="navbar-item" href="#entities">
-          Entities
-        </a>
+        <a class="navbar-item" href="sparql.html">SPARQL Query Interface</a>
+        <a class="navbar-item" href="documentation.html">Documentation</a>
       </div>
   
       <div class="navbar-end">
@@ -82,6 +78,17 @@ lang="en">
       
       <tr>
         <td>
+          <a href="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span" target="_blank">P4_has_time-span</a>
+        </td>
+        <td>
+          
+            <a href="changes_4_aldrovandi_tsp_29_00_1.html" target="_blank">changes_4_aldrovandi_tsp_29_00_1</a>
+          
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
           <a href="http://www.ics.forth.gr/isl/CRMdig/L1_digitized" target="_blank">L1_digitized</a>
         </td>
         <td>
@@ -119,7 +126,7 @@ lang="en">
         </td>
         <td>
           
-            <a href="changes_4_aldrovandi_dev_nikkor_50mm_1.html" target="_blank">changes_4_aldrovandi_dev_nikkor_50mm_1</a>
+            <a href="changes_4_aldrovandi_dev_nikon_d7200_1.html" target="_blank">changes_4_aldrovandi_dev_nikon_d7200_1</a>
           
         </td>
       </tr>
@@ -131,17 +138,6 @@ lang="en">
         <td>
           
             <a href="changes_4_aldrovandi_acr_laura_travaglini_1.html" target="_blank">changes_4_aldrovandi_acr_laura_travaglini_1</a>
-          
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <a href="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span" target="_blank">P4_has_time-span</a>
-        </td>
-        <td>
-          
-            <a href="changes_4_aldrovandi_tsp_29_00_1.html" target="_blank">changes_4_aldrovandi_tsp_29_00_1</a>
           
         </td>
       </tr>
@@ -163,7 +159,7 @@ lang="en">
         </td>
         <td>
           
-            <a href="changes_4_aldrovandi_dev_nikon_d7200_1.html" target="_blank">changes_4_aldrovandi_dev_nikon_d7200_1</a>
+            <a href="changes_4_aldrovandi_dev_nikkor_50mm_1.html" target="_blank">changes_4_aldrovandi_dev_nikkor_50mm_1</a>
           
         </td>
       </tr>
@@ -184,13 +180,5 @@ lang="en">
 </footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script>
-            document.getElementById('entitySearch').addEventListener('input', function () {
-              const query = this.value.toLowerCase();
-              document.querySelectorAll('.cell.entity').forEach(el => {
-                el.style.display = el.textContent.toLowerCase().includes(query) ? '' : 'none';
-              });
-            });
-        </script>
     </body>
 </html>

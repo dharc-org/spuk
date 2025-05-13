@@ -1,8 +1,9 @@
 from src.rdf_graph import RDFGraph
-from src.html_page import HTMLPage, IndexPage
+from src.html_page import HTMLPage, IndexPage, QueryPage, DocPage
 
 def main():
-    rdf = RDFGraph("https://chad-kg.duckdns.org/chadkg/sparql", is_sparql_endpoint=True)
+    source = "https://chad-kg.duckdns.org/chadkg/sparql"
+    rdf = RDFGraph(source, is_sparql_endpoint=True)
     entities = rdf.get_property_object_data()
     summary = rdf.get_summary()
 
@@ -12,6 +13,12 @@ def main():
 
     index_page = IndexPage(entities, summary)
     index_page.save()
+
+    sparql_page = QueryPage(source)
+    sparql_page.save()
+
+    documentation_page = DocPage(source)
+    documentation_page.save()
 
     print("🎉 All pages generated successfully!")
 

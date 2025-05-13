@@ -15,7 +15,7 @@ lang="en">
   role="navigation" 
   aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" href="/">
         <img src="img/logo.png"/>
         <span class="is-large">SPUK</span>
       </a>
@@ -30,12 +30,8 @@ lang="en">
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="#summary">
-          Summary
-        </a>
-        <a class="navbar-item" href="#entities">
-          Entities
-        </a>
+        <a class="navbar-item" href="sparql.html">SPARQL Query Interface</a>
+        <a class="navbar-item" href="documentation.html">Documentation</a>
       </div>
   
       <div class="navbar-end">
@@ -86,7 +82,7 @@ lang="en">
         </td>
         <td>
           
-            <a href="changes_4_aldrovandi_idf_2_ob00_1.html" target="_blank">changes_4_aldrovandi_idf_2_ob00_1</a>
+            <a href="changes_4_aldrovandi_idf_2_ob02_1.html" target="_blank">changes_4_aldrovandi_idf_2_ob02_1</a>
           
         </td>
       </tr>
@@ -97,7 +93,18 @@ lang="en">
         </td>
         <td>
           
-            <a href="changes_4_aldrovandi_idf_2_ob02_1.html" target="_blank">changes_4_aldrovandi_idf_2_ob02_1</a>
+            <a href="changes_4_aldrovandi_idf_2_ob01_1.html" target="_blank">changes_4_aldrovandi_idf_2_ob01_1</a>
+          
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <a href="http://www.cidoc-crm.org/cidoc-crm/P3_has_note" target="_blank">P3_has_note</a>
+        </td>
+        <td>
+          
+            Panthera Leo (linnaeus, 1758) Diorama Con Tre Leoni Tassidermizzati Diorama With Three Taxidermized Lions Manifattura Rowland Ward - Londra, Inizio Sec. Xx  Early 20th Century Bologna, Collezione Di Zoologia, Sistema Museale Di Ateneo
           
         </td>
       </tr>
@@ -130,18 +137,7 @@ lang="en">
         </td>
         <td>
           
-            <a href="changes_4_aldrovandi_idf_2_ob01_1.html" target="_blank">changes_4_aldrovandi_idf_2_ob01_1</a>
-          
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <a href="http://www.cidoc-crm.org/cidoc-crm/P3_has_note" target="_blank">P3_has_note</a>
-        </td>
-        <td>
-          
-            Panthera Leo (linnaeus, 1758) Diorama Con Tre Leoni Tassidermizzati Diorama With Three Taxidermized Lions Manifattura Rowland Ward - Londra, Inizio Sec. Xx  Early 20th Century Bologna, Collezione Di Zoologia, Sistema Museale Di Ateneo
+            <a href="changes_4_aldrovandi_idf_2_ob00_1.html" target="_blank">changes_4_aldrovandi_idf_2_ob00_1</a>
           
         </td>
       </tr>
@@ -162,13 +158,5 @@ lang="en">
 </footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script>
-            document.getElementById('entitySearch').addEventListener('input', function () {
-              const query = this.value.toLowerCase();
-              document.querySelectorAll('.cell.entity').forEach(el => {
-                el.style.display = el.textContent.toLowerCase().includes(query) ? '' : 'none';
-              });
-            });
-        </script>
     </body>
 </html>

@@ -15,7 +15,7 @@ lang="en">
   role="navigation" 
   aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" href="/">
         <img src="img/logo.png"/>
         <span class="is-large">SPUK</span>
       </a>
@@ -30,12 +30,8 @@ lang="en">
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="#summary">
-          Summary
-        </a>
-        <a class="navbar-item" href="#entities">
-          Entities
-        </a>
+        <a class="navbar-item" href="sparql.html">SPARQL Query Interface</a>
+        <a class="navbar-item" href="documentation.html">Documentation</a>
       </div>
   
       <div class="navbar-end">
@@ -82,22 +78,22 @@ lang="en">
       
       <tr>
         <td>
-          <a href="http://www.cidoc-crm.org/cidoc-crm/P2_has_type" target="_blank">P2_has_type</a>
+          <a href="http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content" target="_blank">P190_has_symbolic_content</a>
         </td>
         <td>
           
-            <a href="http://vocab.getty.edu/page/aat/300417207.html" target="_blank">http://vocab.getty.edu/page/aat/300417207</a>
+            Agate Gem With Serapis Enthroned
           
         </td>
       </tr>
       
       <tr>
         <td>
-          <a href="http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content" target="_blank">P190_has_symbolic_content</a>
+          <a href="http://www.cidoc-crm.org/cidoc-crm/P2_has_type" target="_blank">P2_has_type</a>
         </td>
         <td>
           
-            Agate Gem With Serapis Enthroned
+            <a href="http://vocab.getty.edu/page/aat/300417207.html" target="_blank">http://vocab.getty.edu/page/aat/300417207</a>
           
         </td>
       </tr>
@@ -118,13 +114,5 @@ lang="en">
 </footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script>
-            document.getElementById('entitySearch').addEventListener('input', function () {
-              const query = this.value.toLowerCase();
-              document.querySelectorAll('.cell.entity').forEach(el => {
-                el.style.display = el.textContent.toLowerCase().includes(query) ? '' : 'none';
-              });
-            });
-        </script>
     </body>
 </html>

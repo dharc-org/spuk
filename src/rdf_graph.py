@@ -183,8 +183,8 @@ class RDFGraph:
             legend_at_bottom=True,
             legend_box_size=5,
             legend_at_bottom_columns=3,
-            print_values=True,
-            print_values_position="top",
+            #print_values=True,
+            #print_values_position="top",
             order_min=1,
             ).decode("utf-8")
 

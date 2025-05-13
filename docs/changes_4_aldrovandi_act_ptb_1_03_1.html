@@ -15,7 +15,7 @@ lang="en">
   role="navigation" 
   aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" href="/">
         <img src="img/logo.png"/>
         <span class="is-large">SPUK</span>
       </a>
@@ -30,12 +30,8 @@ lang="en">
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="#summary">
-          Summary
-        </a>
-        <a class="navbar-item" href="#entities">
-          Entities
-        </a>
+        <a class="navbar-item" href="sparql.html">SPARQL Query Interface</a>
+        <a class="navbar-item" href="documentation.html">Documentation</a>
       </div>
   
       <div class="navbar-end">
@@ -97,7 +93,18 @@ lang="en">
         </td>
         <td>
           
-            <a href="changes_4_aldrovandi_sfw_instant_meshes_1.html" target="_blank">changes_4_aldrovandi_sfw_instant_meshes_1</a>
+            <a href="changes_4_aldrovandi_sfw_3df_zephyr_1.html" target="_blank">changes_4_aldrovandi_sfw_3df_zephyr_1</a>
+          
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <a href="http://www.ics.forth.gr/isl/CRMdig/L11_had_output" target="_blank">L11_had_output</a>
+        </td>
+        <td>
+          
+            <a href="changes_4_aldrovandi_mdl_ptb_1_03_1.html" target="_blank">changes_4_aldrovandi_mdl_ptb_1_03_1</a>
           
         </td>
       </tr>
@@ -115,44 +122,11 @@ lang="en">
       
       <tr>
         <td>
-          <a href="http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by" target="_blank">P14_carried_out_by</a>
-        </td>
-        <td>
-          
-            <a href="changes_4_aldrovandi_acr_alice_bordignon_1.html" target="_blank">changes_4_aldrovandi_acr_alice_bordignon_1</a>
-          
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <a href="http://www.cidoc-crm.org/cidoc-crm/P11_had_participant" target="_blank">P11_had_participant</a>
-        </td>
-        <td>
-          
-            <a href="changes_4_aldrovandi_acr_unibo_ficlit_1.html" target="_blank">changes_4_aldrovandi_acr_unibo_ficlit_1</a>
-          
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
           <a href="http://www.ics.forth.gr/isl/CRMdig/L23_used_software_or_firmware" target="_blank">L23_used_software_or_firmware</a>
         </td>
         <td>
           
-            <a href="changes_4_aldrovandi_sfw_gimp_1.html" target="_blank">changes_4_aldrovandi_sfw_gimp_1</a>
-          
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <a href="http://www.ics.forth.gr/isl/CRMdig/L23_used_software_or_firmware" target="_blank">L23_used_software_or_firmware</a>
-        </td>
-        <td>
-          
-            <a href="changes_4_aldrovandi_sfw_3df_zephyr_1.html" target="_blank">changes_4_aldrovandi_sfw_3df_zephyr_1</a>
+            <a href="changes_4_aldrovandi_sfw_instant_meshes_1.html" target="_blank">changes_4_aldrovandi_sfw_instant_meshes_1</a>
           
         </td>
       </tr>
@@ -170,11 +144,33 @@ lang="en">
       
       <tr>
         <td>
-          <a href="http://www.ics.forth.gr/isl/CRMdig/L11_had_output" target="_blank">L11_had_output</a>
+          <a href="http://www.cidoc-crm.org/cidoc-crm/P11_had_participant" target="_blank">P11_had_participant</a>
         </td>
         <td>
           
-            <a href="changes_4_aldrovandi_mdl_ptb_1_03_1.html" target="_blank">changes_4_aldrovandi_mdl_ptb_1_03_1</a>
+            <a href="changes_4_aldrovandi_acr_unibo_ficlit_1.html" target="_blank">changes_4_aldrovandi_acr_unibo_ficlit_1</a>
+          
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <a href="http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by" target="_blank">P14_carried_out_by</a>
+        </td>
+        <td>
+          
+            <a href="changes_4_aldrovandi_acr_alice_bordignon_1.html" target="_blank">changes_4_aldrovandi_acr_alice_bordignon_1</a>
+          
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <a href="http://www.ics.forth.gr/isl/CRMdig/L23_used_software_or_firmware" target="_blank">L23_used_software_or_firmware</a>
+        </td>
+        <td>
+          
+            <a href="changes_4_aldrovandi_sfw_gimp_1.html" target="_blank">changes_4_aldrovandi_sfw_gimp_1</a>
           
         </td>
       </tr>
@@ -195,13 +191,5 @@ lang="en">
 </footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script>
-            document.getElementById('entitySearch').addEventListener('input', function () {
-              const query = this.value.toLowerCase();
-              document.querySelectorAll('.cell.entity').forEach(el => {
-                el.style.display = el.textContent.toLowerCase().includes(query) ? '' : 'none';
-              });
-            });
-        </script>
     </body>
 </html>

@@ -27,7 +27,6 @@ class HTMLPage:
         os.makedirs(output_dir, exist_ok=True)
         with open(output_path, "w") as f:
             f.write(html)
-        #print(f"✅ Saved HTML for {self.subject} to {output_path}")
 
 
 class IndexPage:
@@ -60,3 +59,37 @@ class IndexPage:
         with open(os.path.join(output_dir, "index.html"), "w") as f:
             f.write(self.render())
         print(f"✅ Saved index page to {output_dir}/index.html")
+
+
+class QueryPage:
+    def __init__(self, source):
+        self.source = source
+
+    def render(self):
+        """Generates the HTML for the query page."""
+        template = env.get_template("sparql.html")
+        return template.render(source=self.source)
+
+    def save(self, output_dir="docs"):
+        """Saves the query HTML page."""
+        os.makedirs(output_dir, exist_ok=True)
+        with open(os.path.join(output_dir, "sparql.html"), "w") as f:
+            f.write(self.render())
+        print(f"✅ Saved query page to {output_dir}/sparql.html")
+
+
+class DocPage:
+    def __init__(self, source):
+        self.source = source
+
+    def render(self):
+        """Generates the HTML for the documentation page."""
+        template = env.get_template("documentation.html")
+        return template.render(source=self.source)
+
+    def save(self, output_dir="docs"):
+        """Saves the documentation HTML page."""
+        os.makedirs(output_dir, exist_ok=True)
+        with open(os.path.join(output_dir, "documentation.html"), "w") as f:
+            f.write(self.render())
+        print(f"✅ Saved query page to {output_dir}/documentation.html")
