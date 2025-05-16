@@ -26,7 +26,7 @@ def get_namespace(uri: str) -> str:
         return uri.rsplit("/", 1)[0] + "/"
 
 def remove_root(path):
-    return "spuk/" + "/".join(path.split("/")[1:])
+    return "/" + "/".join(path.split("/")[1:])
 
 def generate_path(uri):
     root = "docs"
