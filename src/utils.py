@@ -2,6 +2,10 @@ import html, os
 from urllib.parse import urlparse
 
 
+GITHUB_DEPLOY = True
+REPO_NAME = "spuk"
+
+
 def get_uri_label(uri: str) -> str:
     """Extracts the last fragment or path segment of a URI."""
     if "#" in uri:
@@ -26,7 +30,10 @@ def get_namespace(uri: str) -> str:
         return uri.rsplit("/", 1)[0] + "/"
 
 def remove_root(path):
-    return "/" + "/".join(path.split("/")[1:])
+    if GITHUB_DEPLOY:
+        return f"/{REPO_NAME}/" + "/".join(path.split("/")[1:])
+    else:
+        return "/" + "/".join(path.split("/")[1:])
 
 def generate_path(uri):
     root = "docs"
