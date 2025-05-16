@@ -43,13 +43,23 @@ def generate_path(uri):
     return full_path
 
 def generate_base_path(path):
-    relative_path = os.path.relpath("docs", path)
-    depth = 0 if relative_path == "." else len(relative_path.split(os.sep))
-    if GITHUB_DEPLOY:
+
+    docs_root = os.path.abspath("docs")
+    path_dir = os.path.abspath(os.path.dirname(path))
+    relative_path = os.path.relpath(path_dir, docs_root)
+    if relative_path == ".":
+        return ""
+    depth = len(relative_path.split(os.sep))
+    return "../" * depth
+
+    #relative_path = os.path.relpath("docs", path)
+    #depth = 0 if relative_path == "." else len(relative_path.split(os.sep))
+    '''if GITHUB_DEPLOY:
         if depth == 0:
             return f"/{REPO_NAME}/"
         else:
             return "../" * depth
     else:
-        return "" if depth == 0 else "../" * depth
+        return "" if depth == 0 else "../" * depth'''
+
     
