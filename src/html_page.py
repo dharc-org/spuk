@@ -95,6 +95,9 @@ class IndexPage:
     def render(self):
         """Generates the HTML for the index page."""
         template = env.get_template("index.html")
+        #for entity in self.entities:
+        #    print(entity.get_path())
+        #    print(remove_root(entity.get_path()))
         items = [
             {
                 "uri": entity.subject,

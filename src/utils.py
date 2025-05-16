@@ -26,7 +26,7 @@ def get_namespace(uri: str) -> str:
         return uri.rsplit("/", 1)[0] + "/"
 
 def remove_root(path):
-    return "/" + "/".join(path.split("/")[1:])
+    return "spuk/" + "/".join(path.split("/")[1:])
 
 def generate_path(uri):
     root = "docs"
@@ -36,7 +36,7 @@ def generate_path(uri):
     return full_path
 
 def generate_base_path(path):
-    relative_path = os.path.relpath("spuk", path)
+    relative_path = os.path.relpath("docs", path)
     depth = len(relative_path.split(os.sep))
     if relative_path == ".":
         return ""
