@@ -1,5 +1,5 @@
 from rdflib import Graph, URIRef, RDF, Literal
-from src.utils import get_uri_label, uri_to_filename, get_namespace
+from src.utils import get_uri_label, uri_to_filename, get_namespace, generate_path, remove_root
 from collections import defaultdict
 from SPARQLWrapper import SPARQLWrapper, GET, TURTLE
 import pygal, logging, requests
@@ -137,8 +137,8 @@ class RDFGraph:
         if isinstance(o, URIRef):
             o_str = str(o)
             if o_str in self.entity_data:
-                return get_uri_label(o_str), uri_to_filename(o_str)
-            return get_uri_label(o_str), o_str
+                return o_str, f"{remove_root(generate_path(o_str))}/{uri_to_filename(o_str)}"
+            return o_str, o_str
         return str(o), None
 
     def get_property_ratio(self):

@@ -43,5 +43,17 @@
     </tbody>
   </table>
 
-  <p><a href="index.html">← Back to index</a></p>
+  <p>
+    Serializations:
+    <ul class="block">
+      <li>Turtle: <a href="{{ path }}.ttl">{{ path }}.ttl</a></li>
+      <li>N-Triples: <a href="{{ path }}.nt">{{ path }}.nt</a></li>
+      <li>JSON-LD: <a href="{{ path }}.jsonld">{{ path }}.jsonld</a></li>
+      <li>RDF/XML: <a href="{{ path }}.xml">{{ path }}.xml</a></li>
+    </ul>
+  </p>
+
+  <p class="block">
+    <a href="{{ base_path }}index.html">← Back to index</a>
+  </p>
   {% endblock %}

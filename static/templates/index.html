@@ -72,8 +72,8 @@
       <h3 class="title is-4" id="type-{{ entity.type | replace(' ', '_') }}">{{ entity.type }}</h3>
       <div class="grid is-col-min-24">
         {% for e in entities if e.type == entity.type %}
-          <a class="cell entity" href="{{ e.filename }}.html">
-            {{ e.filename }}
+          <a class="cell entity" href="{{ e.path }}.html">
+            {{ e.uri }}
           </a>
         {% endfor %}
       </div>

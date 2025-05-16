@@ -7,11 +7,19 @@ def main():
     entities = rdf.get_property_object_data()
     summary = rdf.get_summary()
 
+    pages = []
     for entity, property_object_pairs in entities.items():
-        page = HTMLPage(entity, property_object_pairs)
+        page = HTMLPage(
+            entity, 
+            property_object_pairs,
+            rdf
+        )
+        page.generate_folders()
+        page.serialize()
         page.save()
+        pages.append(page)
 
-    index_page = IndexPage(entities, summary)
+    index_page = IndexPage(pages, summary)
     index_page.save()
 
     sparql_page = QueryPage(source)
