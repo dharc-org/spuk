@@ -36,7 +36,7 @@ def generate_path(uri):
     return full_path
 
 def generate_base_path(path):
-    relative_path = os.path.relpath("docs", path)
+    relative_path = os.path.relpath("spuk", path)
     depth = len(relative_path.split(os.sep))
     if relative_path == ".":
         return ""

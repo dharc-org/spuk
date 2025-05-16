@@ -137,8 +137,8 @@ class RDFGraph:
         if isinstance(o, URIRef):
             o_str = str(o)
             if o_str in self.entity_data:
-                #return o_str, f"{remove_root(generate_path(o_str))}/{uri_to_filename(o_str)}"
-                return o_str, f"{generate_path(o_str)}/{uri_to_filename(o_str)}"
+                return o_str, f"{remove_root(generate_path(o_str))}/{uri_to_filename(o_str)}"
+                #return o_str, f"{generate_path(o_str)}/{uri_to_filename(o_str)}"
             return o_str, o_str
         return str(o), None
 
