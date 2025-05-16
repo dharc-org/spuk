@@ -44,7 +44,12 @@ def generate_path(uri):
 
 def generate_base_path(path):
     relative_path = os.path.relpath("docs", path)
-    depth = len(relative_path.split(os.sep))
-    if relative_path == ".":
-        return ""
-    return "../" * depth
+    depth = 0 if relative_path == "." else len(relative_path.split(os.sep))
+    if GITHUB_DEPLOY:
+        if depth == 0:
+            return f"/{REPO_NAME}/"
+        else:
+            return "../" * depth
+    else:
+        return "" if depth == 0 else "../" * depth
+    

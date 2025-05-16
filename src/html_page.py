@@ -90,7 +90,7 @@ class IndexPage:
         """Initializes the IndexPage with the list of entities."""
         self.entities = entities
         self.summary = summary
-        self.base_path = generate_base_path("")
+        self.base_path = generate_base_path(".")
 
     def render(self):
         """Generates the HTML for the index page."""
@@ -125,7 +125,7 @@ class IndexPage:
 class QueryPage:
     def __init__(self, source):
         self.source = source
-        self.base_path = generate_base_path("")
+        self.base_path = generate_base_path(".")
 
     def render(self):
         """Generates the HTML for the query page."""
@@ -146,7 +146,7 @@ class QueryPage:
 class DocPage:
     def __init__(self, source):
         self.source = source
-        self.base_path = generate_base_path("")
+        self.base_path = generate_base_path(".")
 
     def render(self):
         """Generates the HTML for the documentation page."""
