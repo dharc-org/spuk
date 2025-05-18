@@ -26,7 +26,6 @@ class HTMLPage:
             property_object_pairs = self.property_object_pairs,
             base_path = self.base_path,
             path = f"{remove_root(self.get_path())}/{uri_to_filename(self.subject)}"
-            #path = f"{self.get_path()}/{uri_to_filename(self.subject)}"
         )
 
     def save(self):
@@ -95,15 +94,11 @@ class IndexPage:
     def render(self):
         """Generates the HTML for the index page."""
         template = env.get_template("index.html")
-        #for entity in self.entities:
-        #    print(entity.get_path())
-        #    print(remove_root(entity.get_path()))
         items = [
             {
                 "uri": entity.subject,
                 "path": f"{remove_root(entity.get_path())}/{uri_to_filename(entity.subject)}",
-                #"path": f"{entity.get_path()}/{uri_to_filename(entity.subject)}",
-                "type": uri_to_filename(entity.get_type()),
+                "type": entity.get_type(),
                 "type_uri": entity.get_type()
             }
             for entity in self.entities

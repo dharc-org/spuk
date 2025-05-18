@@ -164,7 +164,7 @@ class RDFGraph:
                 if len(value) > max_length:
                     most_connected = key
                     max_length = len(value)
-        return uri_to_filename(most_connected)
+        return generate_path(most_connected)
 
 
     def generate_bar(self, title, data):

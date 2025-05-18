@@ -43,13 +43,10 @@ def generate_path(uri):
     return full_path
 
 def generate_base_path(path):
-    #relative = os.path.relpath(path, "docs")
     folder = os.path.dirname(path) or "."
     relative = os.path.relpath(folder, "docs")
     if relative == ".":
         return ""
     parts = relative.split(os.sep)
-    #depth = len(parts) - 1 
     depth = len(parts)
-    #return "" if depth == 1 else "../" * (depth - 1)
     return "../" * depth

@@ -23,7 +23,9 @@
       </p>
       <p>Average properties per entity: {{ summary.avg_degree }}</p>
       <p>Object/data properties ratio: {{ summary.property_ratio }}</p>
+      <!--
       <p>Entity with highest number of properties: <a href="{{ summary.most_connected }}.html">{{ summary.most_connected }}</a></p>
+    -->
     </div>
   </div>
   
@@ -56,29 +58,13 @@
       </div>
     </div>    
 
-    {% set seen_types = [] %}
-    <div class="buttons are-small is-flex-wrap-wrap">
-      {% for entity in entities %}
-        {% if entity.type not in seen_types %}
-          {% set _ = seen_types.append(entity.type) %}
-          <a class="button is-light is-info" href="#type-{{ entity.type | replace(' ', '_') }}">{{ entity.type }}</a>
-        {% endif %}
-      {% endfor %}
-    </div>
-    {% set seen_types = [] %}
-  {% for entity in entities %}
-    {% if entity.type not in seen_types %}
-      {% set _ = seen_types.append(entity.type) %}
-      <h3 class="title is-4" id="type-{{ entity.type | replace(' ', '_') }}">{{ entity.type }}</h3>
       <div class="grid is-col-min-24">
-        {% for e in entities if e.type == entity.type %}
+        {% for e in entities %}
           <a class="cell entity" href="{{ e.path }}.html">
             {{ e.uri }}
           </a>
         {% endfor %}
       </div>
-    {% endif %}
-  {% endfor %}
 </div>
 
 <script>
