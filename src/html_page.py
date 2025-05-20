@@ -46,7 +46,7 @@ class HTMLPage:
         return self.path
 
     def generate_folders(self):
-        os.makedirs(self.get_path())
+        os.makedirs(self.get_path(), exist_ok=True)
 
     def generate_rdf(self):
         source = self.source.graph
